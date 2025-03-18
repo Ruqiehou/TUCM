@@ -1,0 +1,80 @@
+// ... 头部样式保持不变 ...
+<meta charset="UTF-8">
+<style>
+    .container {
+        /* 添加阴影效果 */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+    }
+    button:hover {
+        background: #0056b3;
+        transform: translateY(-1px);
+    }
+    button:active {
+        transform: translateY(1px);
+    }
+    input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+    /* 新增链接区域样式 */
+    .link-grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+    }
+    .page-link {
+        padding: 8px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+    .page-link:hover {
+        background: #f8f9fa;
+        transform: translateY(-2px);
+    }
+</style>
+
+// ... body部分保持不变直到消息div之后 ...
+
+    <div class="container">
+        <h1>页面导航系统</h1>
+        <input type="text" id="pageInput" placeholder="输入1-20页码">
+        <button onclick="navigate()">立即跳转</button>
+        <div id="message"></div>
+        
+        <!-- 新增预设链接区域 -->
+        <div class="link-grid" id="pageLinks"></div>
+    </div>
+
+<script>
+    // 在脚本开头添加页面数量配置
+    const MAX_PAGE = 100;
+
+    function navigate() {
+        // 修改验证逻辑
+        if (!/^\d+$/.test(input) || input < 1 || input > MAX_PAGE) {
+            messageDiv.textContent = `请输入1-${MAX_PAGE}之间的有效数字`;
+            return;
+        }
+
+        // 修改错误提示
+        img.onerror = () => {
+            messageDiv.textContent = `页面${input}暂未开放`;
+        };
+    }
+
+    // 新增：动态生成页面链接
+    window.onload = () => {
+        const linkContainer = document.getElementById('pageLinks');
+        for (let i = 1; i <= MAX_PAGE; i++) {
+            const link = document.createElement('a');
+            link.className = 'page-link';
+            link.href = `page${i}.html`;
+            link.textContent = `Page ${i}`;
+            linkContainer.appendChild(link);
+        }
+    };
+</script>
