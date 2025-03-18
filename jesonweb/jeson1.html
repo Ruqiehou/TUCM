@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>费里斯</title>
+    <!-- 新增字体和CSS变量 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+    :root {
+        --primary-color: #2c3e50;
+        --accent-color: #3498db;
+        --gradient: linear-gradient(135deg, #3498db, #2c3e50);
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+        font-family: 'Noto Serif SC', serif;
+        line-height: 1.8;
+        padding: 2rem;
+        background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+    
+    h1::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 3px;
+        background: var(--gradient);
+        border-radius: 2px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin: 2rem 0;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(to right, transparent, rgba(52, 152, 219, 0.1), transparent);
+        border-left: 4px solid var(--accent-color);
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+    }
+    
+    .info-card:hover {
+        transform: translateY(-5px);
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        padding: 0;
+    }
+    
+    li {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1.5rem;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+    }
+    
+    li:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 原有页脚样式保留并增强 */
+    body::after {
+        content: "版权所有 © 2025 jesonlee";
+        background: var(--gradient);
+        color: white;
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+        
+        .info-card {
+            padding: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- 在正文中添加卡片式容器 -->
+    <div class="info-card">
+        <h1>费里斯王国与费里斯家族</h1>
+
+        <h2>简介</h2>
+        <p><strong>Irf名称：</strong></p>
+        <ul>
+            <li>中文名：费里斯王国</li>
+            <li>斯托里斯语：Is Feris Nals</li>
+            <li>马卡洛斯语：暂无数据</li>
+            <li>底律特语(南方方言)：Is Ferisia</li>
+        </ul>
+
+        <p><strong>irf等级类别：</strong>世俗化的独立有地王国(目前与其他国家组成了共主邦联)</p>
+        <p><strong>政体：</strong>君主立宪制，议会制</p>
+        <p><strong>首都：</strong>信使堡</p>
+        <p><strong>国家代码：</strong>FR</p>
+        <p><strong>根达里斯星统一总邮区号：</strong>+0，+00</p>
+        <p><strong>所属帝国法理：</strong>米特斯拉帝国</p>
+        <p><strong>时区：</strong>F0或T-1</p>
+
+        <h3>主要感性生命：</h3>
+        <ul>
+            <li>根达里斯人：斯托里斯人，底律特人，加尔斯人</li>
+            <li>龙：Shok龙，风龙</li>
+            <li>信使鸟：原生信使鸟</li>
+        </ul>
+
+        <h3>国教：</h3>
+        <p>龙信仰与Funul信仰的奇怪复合体</p>
+
+        <h3>法定货币：</h3>
+        <p>费里斯专用米特斯拉元(F-MD)</p>
+
+        <h3>电话区号：</h3>
+        <p>+0，+00</p>
+
+        <h3>国际域名缩写：</h3>
+        <p>.fr</p>
+
+        <h3>道路通行：</h3>
+        <p>左</p>
+
+        <h3>法律体系：</h3>
+        <p>斯托里斯法系</p>
+
+        <h3>国花：</h3>
+        <p>桂花</p>
+
+        <h3>国树：</h3>
+        <p>橡树</p>
+
+        <h3>国鸟：</h3>
+        <p>信使鸟</p>
+
+        <h3>国歌：</h3>
+        <p>《信风颂》</p>
+
+        <h3>国土面积：</h3>
+        <p>暂无数据</p>
+
+        <h3>人口：</h3>
+        <p>约6000万</p>
+
+        <h3>GDP总量：</h3>
+        <p>暂无数据</p>
+
+        <h3>人均GDP：</h3>
+        <p>暂无数据</p>
+
+        <h3>人口密度：</h3>
+        <p>暂无数据</p>
+
+        <h2>历史</h2>
+        <p><strong>第三纪元XXX年：</strong>费里斯家族建立</p>
+        <p><strong>第三纪元xxx年：</strong>费里斯家族成为米特斯拉帝国下辖的选侯，费里斯选侯irf成立</p>
+        <p><strong>第三纪元xxx年：</strong>费里斯家族征服今费里斯地区，以信使堡为统治核心，以费里斯选侯身份建立费里斯选侯国irf，替换了之前的费里斯选侯irf</p>
+        <p><strong>第三纪元XXX年：</strong>由于在森之战中帮助安戈利斯·比利斯反抗他的父亲，费里斯家族被剥夺选侯资格，选侯国变成一个大公国。森之战结束后，米特斯拉帝国在梅·沙希尔的统治下，费里斯家族恢复了选侯资格</p>
+        <p><strong>第三纪元XXX年：</strong>由于费里斯家族在袭陆飓风战争中保持中立偏比利斯，得到盖尔女皇的明升暗降，费里斯选侯国irf变成费里斯王国</p>
+        <p>大战中，由于费里斯家族早早投降，使得王国没有受到大战太大的影响。大战结束后，因为害怕盖尔女皇的清算以及对帝国新首相的不满，费里斯家族发动科米亚战争，利用先进的费里斯战术击败盖尔女皇，但因为森之丘的护盾影响，费里斯军又没有半神带领，费里斯家族无法进攻王城森之丘，因此与盖尔女皇进行了和平谈判，最终盖尔女皇将帝国大片直辖区割让给费里斯王国，并任命费里斯家族成为帝国东境守护。</p>
+        <p>二战前夕，由于盖尔女皇失踪，王城森之丘护盾消失，米特斯拉帝国一片动荡，费里斯家族也开始了争霸之路，并通过战争成为使得其族长阿曼尔·费里斯成为内战中的第一位"王"。不过由于后面与加兰的战争中战败，费里斯家族和王国被迫效忠于受加兰支持的半神希雅金西斯·奥林斯为"王"，后者不久后成为米特斯拉帝国新女皇。二战第一阶段结束</p>
+        <p>二战第二阶段前期，费里斯王国军成为对抗雷格里休斯的主力之一。后来雷格里休斯拒绝费里斯家族投降，并将费里斯家族赶尽杀绝，屠戮殆尽。在雷格里休斯划分领地时，费里斯地区被划入了加兰帝国，但没有建制</p>
+        <p>二战第三阶段，得尔奇斯帝国攻占费里斯地区，建立了费里斯总督区。后来二战结束后，费里斯地区作为战利品加入加兰，加兰延续了得尔奇斯的建制。不过后来费里斯地区又多在费里斯四省(卡提亚行省，中费里斯行省，南费里斯行省，西费里斯行省)和费里斯总督区之间来回切换。加兰提尔提斯王朝时期，费里斯地区发展迅速，成为第一个完成工业革命的地区，成为了根达里斯最发达的地区，不过由于加兰帝国元老院的干涉，费里斯地区的发展逐渐停滞。</p>
+        <p>加兰提尔提斯王朝结束后，元老院为了遏制加兰帝国境内的进步势力，声称费里斯地区不是加兰的法理领土，只是提尔提斯家族的私人领地，在之前加兰与费里斯地区属于共主邦联关系。不久后，在元老院的帮助下，费里斯地区从加兰中独立。独立后的费里斯地区建立了共和国，并在开明的政策和先前的基础上继续发展。后来为了伟大的斯托里斯人事业，费里斯共和国改成了以比利斯家族为王室的独立王国，并于其他比利斯家族统治的国家组建了共主邦联并延续至今。</p>
+
+        <h2>自然地理</h2>
+        <p><strong>主要气候：</strong>温带海洋性气候</p>
+
+        <h2>行政区划</h2>
+        <p>暂无数据</p>
+
+        <h2>政治与外交</h2>
+        <p>费里斯王国是君主立宪制国家，由7省联合议会实际上选举首相。国王是国家元首、最高法院院长、武装部队总司令和教会的首席大公，形式上有权任免内阁首相、各部大臣、高级法官、军官、各属地的省长、外交官、教会高级神职人员等，并有召集、停止和解散议会，批准法律，宣战权和等权力，但实权在内阁和议会。</p>
+        <p>在对外关系上，与霍汶-艾瑟维尔汗国，米特斯拉帝国，斯托里斯王国，皮切安王国，巨龙堡王国一并组成了共主邦联：比利斯帝国。对于其他国家的对外态度为：经济霸权主义</p>
+
+        <h2>军事</h2>
+        <p>费里斯王国的主要军队由空军，海军，陆军构成，其中陆军较为薄弱，空军是根达里斯星最强大的空军力量。费里斯王国据公开的数据为6万人，空军约有0.6万人，海军1.4万左右，陆军只有4万。</p>
+    </body>
+    <style>
+        body::after {
+          content: "版权所有 © 2025 jesonlee";
+          background-color: #f5f5f5;
+          padding: 10px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+        }
+      </style>
+    </html>
+    
+    <!-- 在head部分添加预加载和DNS预解析 -->
+    <link rel="preload" href="https://www.j9.gs/usr/themes/SunnyLite/style/main.css" as="style">
+    <link rel="dns-prefetch" href="//font.sec.miui.com">
+    
+    <!-- 菜单部分增加语义化标签 -->
+    <nav class="cat_menu cat_block" aria-label="主导航菜单">
+        <ul class="left">
+            <!-- ...原有菜单项... -->
+        </ul>
+    </nav>
+    
+    
+    
+ 
+    
+    <!-- 脚本优化 -->
+    <script>
+    // 使用Intersection Observer实现懒加载
+    const lazyImages = document.querySelectorAll('img.lazyload');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    lazyImages.forEach(img => observer.observe(img));
+    
+    // 分页加载优化
+    let isLoading = false;
+    async function loadMoreArticles() {
+        if (isLoading) return;
+        isLoading = true;
+        
+        try {
+            const response = await fetch(`/api/articles?page=${currentPage}`);
+            const newArticles = await response.json();
+            // 使用DocumentFragment批量插入
+            const fragment = document.createDocumentFragment();
+            newArticles.forEach(article => {
+                const articleElement = createArticleElement(article);
+                fragment.appendChild(articleElement);
+            });
+            document.querySelector('.postlist_out').appendChild(fragment);
+            currentPage++;
+        } finally {
+            isLoading = false;
+        }
+    }
+    </script>

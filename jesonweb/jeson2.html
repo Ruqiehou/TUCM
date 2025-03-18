@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>米特斯拉帝国行政区划</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e67e22;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f6fa;
+        }
+
+        /* 导航区 */
+        .nav-container {
+            background: var(--primary-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        /* 地区卡片 */
+        .region-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .region-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 特色标题 */
+        .region-title {
+            color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        /* 信息框样式 */
+        .infobox {
+            background: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            float: right;
+            width: 300px;
+            margin: 0 0 1rem 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .infobox h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* 地区特色颜色 */
+        #songwu { border-left-color: #27ae60; }
+        #south-d { border-left-color: #8e44ad; }
+        #north-d { border-left-color: #2980b9; }
+        #smoke-sea { border-left-color: #c0392b; }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li><a href="#songwu">咏雾地区</a></li>
+            <li><a href="#south-d">南底律特</a></li>
+            <li><a href="#north-d">北底律特</a></li>
+            <li><a href="#smoke-sea">环烟海</a></li>
+        </ul>
+    </nav>
+
+    <div class="infobox">
+        <h3>帝国概览</h3>
+        <p><strong>首都:</strong> 森之丘</p>
+        <p><strong>主要文化:</strong> 龙信仰文化</p>
+        <p><strong>官方语言:</strong> 斯托里斯语</p>
+        <p><strong>政体:</strong> 行省-选帝侯混合制</p>
+    </div>
+
+    <article class="region-card" id="songwu">
+        <h2 class="region-title" style="color: #27ae60;">咏雾地区</h2>
+        <p>位于帝国最西端，"永恒之王"盖尔女皇的故乡,主要民族是精灵。</p>
+        <div class="highlight">
+            <p>历史沿革：</p>
+            <ul>
+                <li>古代：艾维利亚王国时期</li>
+                <li>中世：咏雾卡莎国统一</li>
+                <li>近代：帝国自治领时期</li>
+            </ul>
+        </div>
+    </article>
+
+    <article class="region-card" id="south-d">
+        <h2 class="region-title" style="color: #8e44ad;">南方底律特尼亚</h2>
+        <p>南境传统领地，本土信仰盛行，而非正法信仰</p>
+        <div class="economic-status">
+            <p>经济特征：</p>
+            <ul>
+                <li>原始采集经济</li>
+                <li>毛皮贸易中心</li>
+                <li>传统手工艺</li>
+            </ul>
+        </div>
+    </article>
+
+    <article class="region-card" id="north-d">
+        <h2 class="region-title" style="color: #2980b9;">北方底律特尼亚</h2>
+        <p>帝国直辖农业区...</p>
+        <div class="governance">
+            <p>治理结构：</p>
+            <ul>
+                <li>三总督制</li>
+                <li>粮食生产区</li>
+                <li>军事屯田</li>
+            </ul>
+        </div>
+    </article>
+
+    <article class="region-card" id="smoke-sea">
+        <h2 class="region-title" style="color: #c0392b;">环烟海地区</h2>
+        <p>帝国核心区域...</p>
+        <div class="political-structure">
+            <p>政治特色：</p>
+            <ul>
+                <li>行省与选帝侯交错</li>
+                <li>首都经济圈</li>
+                <li>龙信仰圣城</li>
+            </ul>
+        </div>
+    </article>
+</body>
+</html>
