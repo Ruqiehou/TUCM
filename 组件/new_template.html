@@ -1,0 +1,302 @@
+<head>
+    <!-- 新增动画样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* 新增自定义动画 */
+        @keyframes floatUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .webHeader {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            color: #fff;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: floatUp 1s ease-out;
+        }
+
+        .main-nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .nav-list a {
+            color: #34495e;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e74c3c;
+            transition: width 0.3s;
+        }
+
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        .world-intro {
+            perspective: 1000px;
+            margin: 4rem auto;
+            max-width: 800px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s;
+        }
+
+        .world-intro.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .map-container {
+            transition: transform 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .map-container:hover {
+            transform: scale(1.02);
+        }
+
+        .main-footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在body开始处添加星空背景 -->
+    <div id="starfield"></div>
+
+    <!-- 修改后的导航结构 -->
+    <nav class="main-nav animate__animated animate__fadeInDown">
+        <ul class="nav-list">
+            <li><a href="/" class="nav-link">首页</a></li>
+           
+        </ul>
+    </nav>
+
+    <!-- 新增脚本 -->
+    <script>
+        // 滚动动画触发器
+        function checkScroll() {
+            const elements = document.querySelectorAll('.world-intro');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // 初始化星空背景
+        function createStarfield() {
+            const container = document.getElementById('starfield');
+            for(let i=0; i<200; i++){
+                const star = document.createElement('div');
+                star.style.cssText = `
+                    position: fixed;
+                    width: ${Math.random()*3}px;
+                    height: ${Math.random()*3}px;
+                    background: rgba(255,255,255,${Math.random()});
+                    top: ${Math.random()*100}%;
+                    left: ${Math.random()*100}%;
+                    border-radius: 50%;
+                    z-index: -1;
+                    animation: twinkle ${2 + Math.random()*3}s infinite;
+                `;
+                container.appendChild(star);
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('DOMContentLoaded', () => {
+            createStarfield();
+            checkScroll();
+        });
+    </script>
+</body>
+ 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站点导航</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2em;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-card.a-site {
+            border-top: 4px solid #3498db;
+        }
+
+        .nav-card.b-site {
+            border-top: 4px solid #e74c3c;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #c0392b;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎访问网址导航</h1>
+        
+        <div class="nav-grid">
+            <!-- TUCM 站点 -->
+            <div class="nav-card a-site">
+                <h2>TUCM官网</h2>
+                <p>造语者联盟官方网站</p>
+                <a href="http://tucm.top" class="btn btn-primary" target="_blank">访问TUCM</a>
+            </div>
+
+            <!-- Gendaris 站点 -->
+            <div class="nav-card b-site">
+                <h2>Gendaris官网</h2>
+                <p>世界观介绍</p>
+                <a href="http://gendaris.jesonlee.com" class="btn btn-secondary" target="_blank">访问Gendaris</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ 
