@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查索玛苏语单词查询</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            color: #34495e;
+        }
+
+        .back-home {
+            margin-top: 20px;
+        }
+
+        .back-home button {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .back-home button:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>查索玛苏语单词查询</h1>
+        <div class="input-group">
+            <input type="text" id="inputWord" placeholder="请输入中文或查语单词" />
+            <button onclick="searchWord()"> 查询 </button>
+        </div>
+        <div id="result"></div>
+        
+        <div class="back-home">
+            <button onclick="goBackHome()">返回首页</button>
+        </div>
+    </div>
+
+    <script src="js/csmsword888.js"></script>
+    <script>
+        function searchWord() {
+            // 调用 csmsword888.js 中的 searchWord 函数
+            csms.searchWord();
+        }
+
+        function goBackHome() {
+            window.location.href = '/'; // 替换为你的首页URL
+        }
+    </script>
+</body>
+</html>
