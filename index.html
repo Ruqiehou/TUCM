@@ -18,51 +18,7 @@
             line-height: 1.6;
             color: #333;
             background-color: #f8f9fa;
-            margin-bottom: 80px;
-        }
-
-        /* 导航栏 */
-        header {
-            background-color: #4a6fa5;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #e0e0e0;
+            margin-bottom: 50px; /* 为页脚留出空间 */
         }
 
         /* 容器 */
@@ -73,38 +29,29 @@
             padding: 2rem 0;
         }
 
-        /* 英雄区域 */
-        .hero {
+        /* 标题样式 */
+        h1 {
             text-align: center;
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #4a6fa5 0%, #166088 100%);
-            color: white;
-            margin-bottom: 3rem;
-            border-radius: 0 0 20px 20px;
+            color: #4a6fa5;
+            margin-top: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease;
+        h2 {
+            color: #4a6fa5;
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        /* 简介部分 */
+        /* 简介区域 */
         .intro {
             background-color: white;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 3rem;
-            animation: fadeIn 1s ease 0.6s both;
         }
 
         .intro p {
@@ -113,36 +60,29 @@
             line-height: 1.8;
         }
 
-        /* 分类部分 */
-        .categories {
+        /* 分类区域 */
+        .category-sections {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .category-card {
+        .category-section {
             background-color: white;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease;
         }
 
-        .category-card:hover {
+        .category-section:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
-        .category-card h2 {
-            color: #4a6fa5;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
         /* 按钮样式 */
-        .btn {
+        a {
             display: inline-block;
             margin: 0.5rem;
             padding: 0.8rem 1.5rem;
@@ -155,127 +95,129 @@
             font-weight: 500;
         }
 
-        .btn:hover {
+        a:hover {
             background-color: #4a6fa5;
             color: white;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* 友情链接 */
         .friend-links {
-            background-color: white;
+            max-width: 1200px;
+            margin: 40px auto;
             padding: 2rem;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease 0.9s both;
         }
 
-        .friend-links h2 {
-            color: #4a6fa5;
-            margin-bottom: 2rem;
+        .section-title {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 64px;
+            height: 3px;
+            background: #4a6fa5;
+            margin: 10px auto;
         }
 
         .links-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .friend-link {
             display: flex;
             align-items: center;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: #333;
+            border: none;
         }
 
         .friend-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: #f8f9fa;
+            color: #333;
         }
 
         .link-logo {
+            flex-shrink: 0;
             width: 60px;
             height: 60px;
-            margin-right: 1rem;
-            flex-shrink: 0;
+            margin-right: 15px;
         }
 
         .link-logo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .link-info h3 {
-            margin: 0 0 0.3rem 0;
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
             color: #4a6fa5;
         }
 
         .link-info p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.9em;
             color: #666;
+            line-height: 1.4;
         }
 
-        /* 页脚 */
-        footer {
-            background-color: #333;
-            color: white;
+        /* 页脚 - 使用body::after伪元素 */
+        body::after {
+            content: "版权所有 © 2020-2026 TUCM造语者联盟";
+            background-color: #f5f5f5;
+            padding: 10px;
             text-align: center;
-            padding: 1.5rem;
+            font-family: Arial, sans-serif;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-        }
-
-        /* 动画 */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 10;
         }
 
         /* 响应式设计 */
         @media (max-width: 768px) {
-            .hero h1 {
+            h1 {
                 font-size: 2rem;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .container {
+                width: 95%;
+                padding: 1rem 0;
             }
 
-            .nav-links {
-                display: none;
-            }
-
-            .categories {
-                grid-template-columns: 1fr;
+            .intro,
+            .category-section,
+            .friend-links {
+                padding: 1.5rem;
             }
 
             .links-container {
                 grid-template-columns: 1fr;
             }
 
-            .btn {
+            a {
                 display: block;
                 text-align: center;
             }
@@ -283,100 +225,73 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <header>
-        <nav>
-            <div class="logo">造语者联盟</div>
-            <ul class="nav-links">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#content">内容</a></li>
-                <li><a href="#tools">工具</a></li>
-                <li><a href="#links">友情链接</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- 英雄区域 -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>造语者联盟</h1>
-            <p>探索语言创造的无限可能</p>
-        </div>
-    </section>
-
+    <h1>造语者联盟官方网站</h1>
+    
     <div class="container">
-        <!-- 简介部分 -->
-        <section class="intro">
+        <div class="intro">
             <p>造语者联盟成立于2020年5月17日，8月8日造语联盟贴吧成立。20年下半年，造语者交流群更名造语者联盟，标志着联盟的正式成立。2023年10月5日下午14时30分，建立了造语者联盟Fandom。2025年2月21日0时9分，自建官网上线。</p>
-        </section>
+        </div>
 
-        <!-- 分类部分 -->
-        <section class="categories">
-            <div class="category-card" id="content">
+        <div class="category-sections">
+            <div class="category-section">
                 <h2>内容</h2>
-                <a href="ruqiehou.html" class="btn">汝且候简介</a>
-                <a href="tucmhistory.html" class="btn">造语者联盟历史</a>
-                <a href="pages/page0.html" class="btn">文集</a>
+                <a href="ruqiehou.html">汝且候简介</a>
+                <a href="tucmhistory.html">造语者联盟历史</a>
+                <a href="pages/page0.html">文集</a>
             </div>
 
-            <div class="category-card" id="tools">
+            <div class="category-section">
                 <h2>工具</h2>
-                <a href="zcj.html" class="btn">造词机</a>
-                <a href="csmsword.html" class="btn">查索玛苏语词典</a>
-                <a href="sjrmdm.html" class="btn">随机人名地名</a>
+                <a href="zcj.html">造词机</a>
+                <a href="csmsword.html">查索玛苏语词典</a>
+                <a href="sjrmdm.html">随机人名地名</a>
             </div>
-        </section>
-
-        <!-- 友情链接 -->
-        <section class="friend-links" id="links">
-            <h2>友情链接</h2>
-            <div class="links-container">
-                <a href="https://gendaris.jesonlee.com" target="_blank" class="friend-link">
-                    <div class="link-logo">
-                        <img src="images/gendaris_logo.png" alt="根达里斯">
-                    </div>
-                    <div class="link-info">
-                        <h3>根达里斯</h3>
-                        <p>神奇世界的探索之旅</p>
-                    </div>
-                </a>
-
-                <a href="https://tucm.fandom.com/zh/wiki/%E9%80%A0%E8%AF%AD%E8%80%85%E8%81%94%E7%9B%9F_Wiki" target="_blank" class="friend-link">
-                    <div class="link-logo">
-                        <img src="images/tucm_logo.jpg" alt="造语者联盟WIki">
-                    </div>
-                    <div class="link-info">
-                        <h3>造语者联盟WIki</h3>
-                        <p>更加成熟的社区</p>
-                    </div>
-                </a>
-
-                <a href="https://worldviewcreategroup.fandom.com/zh/wiki/%E4%B8%96%E7%95%8C%E8%A7%82%E8%AE%BE%E5%AE%9A%E5%9C%88_Wiki" target="_blank" class="friend-link">
-                    <div class="link-logo">
-                        <img src="images/wsc_logo.jpg" alt="世界观设定圈WIki">
-                    </div>
-                    <div class="link-info">
-                        <h3>世界观设定圈WIki</h3>
-                        <p>想象力的家园</p>
-                    </div>
-                </a>
-
-                <a href="http://wiki.tucm.top/" target="_blank" class="friend-link">
-                    <div class="link-logo">
-                        <img src="images/tucm_logo.jpg" alt="造语和世设wiki">
-                    </div>
-                    <div class="link-info">
-                        <h3>造语和世设wiki</h3>
-                        <p>全新独立wiki网站</p>
-                    </div>
-                </a>
-            </div>
-        </section>
+        </div>
     </div>
 
-    <!-- 页脚 -->
-    <footer>
-        <p>版权所有 © 2020-2026 TUCM造语者联盟</p>
-    </footer>
+    <section class="friend-links">
+        <h2 class="section-title">友情链接</h2>
+        <div class="links-container">
+            <a href="https://gendaris.jesonlee.com" target="_blank" class="friend-link">
+                <div class="link-logo">
+                    <img src="images/gendaris_logo.png" alt="根达里斯">
+                </div>
+                <div class="link-info">
+                    <h3>根达里斯</h3>
+                    <p>神奇世界的探索之旅</p>
+                </div>
+            </a>
+
+            <a href="https://tucm.fandom.com/zh/wiki/%E9%80%A0%E8%AF%AD%E8%80%85%E8%81%94%E7%9B%9F_Wiki" target="_blank" class="friend-link">
+                <div class="link-logo">
+                    <img src="images/tucm_logo.jpg" alt="造语者联盟WIki">
+                </div>
+                <div class="link-info">
+                    <h3>造语者联盟WIki</h3>
+                    <p>更加成熟的社区</p>
+                </div>
+            </a>
+
+            <a href="https://worldviewcreategroup.fandom.com/zh/wiki/%E4%B8%96%E7%95%8C%E8%A7%82%E8%AE%BE%E5%AE%9A%E5%9C%88_Wiki" target="_blank" class="friend-link">
+                <div class="link-logo">
+                    <img src="images/wsc_logo.jpg" alt="世界观设定圈WIki">
+                </div>
+                <div class="link-info">
+                    <h3>世界观设定圈WIki</h3>
+                    <p>想象力的家园</p>
+                </div>
+            </a>
+
+            <a href="http://wiki.tucm.top/" target="_blank" class="friend-link">
+                <div class="link-logo">
+                    <img src="images/tucm_logo.jpg" alt="造语和世设wiki">
+                </div>
+                <div class="link-info">
+                    <h3>造语和世设wiki</h3>
+                    <p>全新独立wiki网站</p>
+                </div>
+            </a>
+        </div>
+    </section>
 </body>
 </html>
