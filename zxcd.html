@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户中心 - 造语者联盟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4a6fa5, #6b8cbc);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .auth-section {
+            padding: 30px;
+            display: none;
+        }
+
+        .dictionary-section {
+            padding: 30px;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4a6fa5;
+        }
+
+        .btn {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #3a5a80;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #2ecc71;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .tab-button.active {
+            background-color: #4a6fa5;
+            color: white;
+        }
+
+        .tab-button:not(.active):hover {
+            background-color: #e9ecef;
+        }
+
+        .dictionary-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .dictionary-list {
+            margin-top: 20px;
+        }
+
+        .dictionary-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dictionary-item .info {
+            flex-grow: 1;
+        }
+
+        .dictionary-item .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .user-info {
+            background-color: #e9f7ef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>造语者联盟用户中心</h1>
+            <p>管理您的个人词库和语言创作</p>
+        </div>
+        
+        <!-- 标签页导航 -->
+        <div class="tab-navigation">
+            <button class="tab-button active" data-tab="auth">登录/注册</button>
+            <button class="tab-button" data-tab="dictionary" id="dictTabBtn">词库管理</button>
+        </div>
+        
+        <!-- 登录/注册区域 -->
+        <div class="auth-section" id="authSection">
+            <div id="loginForm">
+                <h2>用户登录</h2>
+                <div class="form-group">
+                    <label for="loginNickname">昵称</label>
+                    <input type="text" id="loginNickname" name="loginNickname" required>
+                    <div class="error-message" id="login-nickname-error">请输入正确的昵称</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">密码</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required>
+                    <div class="error-message" id="login-password-error">密码不正确</div>
+                </div>
+                
+                <button type="button" class="btn" id="loginBtn">登录</button>
+                <button type="button" class="btn btn-secondary" id="showRegisterBtn">注册新账户</button>
+                
+                <div class="success-message" id="login-success">登录成功！</div>
+            </div>
+            
+            <div id="registerForm" class="hidden" style="margin-top: 30px;">
+                <h2>用户注册</h2>
+                <div class="form-group">
+                    <label for="regNickname">昵称</label>
+                    <input type="text" id="regNickname" name="regNickname" required>
+                    <div class="error-message" id="reg-nickname-error">请输入有效的昵称</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regPassword">密码</label>
+                    <input type="password" id="regPassword" name="regPassword" required>
+                    <div class="error-message" id="reg-password-error">密码至少需要6个字符</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regConfirmPassword">确认密码</label>
+                    <input type="password" id="regConfirmPassword" name="regConfirmPassword" required>
+                    <div class="error-message" id="reg-confirm-error">两次输入的密码不一致</div>
+                </div>
+                
+                <button type="button" class="btn" id="registerBtn">注册</button>
+                <button type="button" class="btn btn-secondary" id="showLoginBtn">返回登录</button>
+                
+                <div class="success-message" id="reg-success">注册成功！</div>
+            </div>
+        </div>
+        
+        <!-- 词库管理区域 -->
+        <div class="dictionary-section" id="dictionarySection">
+            <div class="user-info" id="userInfo">
+                <div>欢迎，<span id="displayNickname"></span>！</div>
+                <button type="button" class="btn btn-secondary" id="logoutBtn">退出登录</button>
+            </div>
+            
+            <h2>我的词库</h2>
+            
+            <!-- 添加词条表单 -->
+            <div class="dictionary-form">
+                <h3>添加新词条</h3>
+                <div class="form-group">
+                    <label for="word">词语</label>
+                    <input type="text" id="word" name="word" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="definition">定义</label>
+                    <input type="text" id="definition" name="definition" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pronunciation">发音</label>
+                    <input type="text" id="pronunciation" name="pronunciation">
+                </div>
+                
+                <button type="button" class="btn" id="addWordBtn">添加词条</button>
+                <button type="button" class="btn btn-secondary" id="clearFormBtn">清空表单</button>
+                
+                <div class="success-message" id="add-success">词条添加成功！</div>
+            </div>
+            
+            <!-- 词库列表 -->
+            <div class="dictionary-list" id="dictionaryList">
+                <h3>我的词条列表</h3>
+                <div id="wordsContainer">
+                    <!-- 词条将在这里动态显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/user_auth.js"></script>
+</body>
+</html>
