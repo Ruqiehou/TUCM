@@ -329,7 +329,61 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 刷新词库列表
         loadUserDictionary();
+        
+        // 更新按钮文本为"更新词条"
+        const addWordBtnText = addWordBtn.innerText;
+        if(addWordBtnText !== '更新词条') {
+            addWordBtn.dataset.originalText = addWordBtnText; // 保存原始文本
+        }
+        addWordBtn.innerText = '更新词条';
+        addWordBtn.onclick = function() { updateWord(wordId); };
     }
+    
+    // 更新词条（在编辑模式下保存更改）
+    function updateWord(wordId) {
+        const word = wordInput.value.trim();
+        const definition = definitionInput.value.trim();
+        const pronunciation = pronunciationInput.value.trim();
+        
+        if (!word || !definition) {
+            alert('词语和定义不能为空');
+            return;
+        }
+        
+        // 创建更新后的词条对象
+        const updatedWord = {
+            id: wordId, // 使用原来的ID
+            word: word,
+            definition: definition,
+            pronunciation: pronunciation,
+            dateAdded: new Date().toISOString()
+        };
+        
+        // 添加到当前用户的词库
+        currentUser.dictionary = currentUser.dictionary || [];
+        // 如果已有相同ID的词条，先移除它
+        currentUser.dictionary = currentUser.dictionary.filter(w => w.id != wordId);
+        currentUser.dictionary.push(updatedWord);
+        
+        // 保存更新后的用户数据
+        updateUserDictionary(currentUser.nickname, currentUser.dictionary);
+        
+        // 恢复按钮文本
+        if(addWordBtn.dataset.originalText) {
+            addWordBtn.innerText = addWordBtn.dataset.originalText;
+            addWordBtn.onclick = function() { addWord(); };
+        }
+        
+        // 显示成功消息并清空表单
+        addSuccess.style.display = 'block';
+        setTimeout(() => {
+            addSuccess.style.display = 'none';
+            clearWordForm();
+            loadUserDictionary(); // 刷新词库列表
+        }, 2000);
+    }
+    
+
     
     // 清空词条表单
     function clearWordForm() {
@@ -428,4 +482,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 全局函数供HTML调用
     window.deleteWord = deleteWord;
     window.editWord = editWord;
+    
+    // 确保updateWord也可在全局范围内访问
+    window.updateWord = updateWord;
 });
