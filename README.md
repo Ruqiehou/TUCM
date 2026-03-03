@@ -31,8 +31,7 @@ TUCM是一个优秀的人造语言（conlang）社区，致力于造语爱好者
 
 ### 技术栈
 
-- 前端：HTML, CSS, JavaScript
-- 无后端依赖，纯静态网站
+- HTML, CSS, JavaScript
 
 ## 版权信息
 
