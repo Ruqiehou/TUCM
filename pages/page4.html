@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双核层级理论 - TUCM</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        .theory-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        .theory-header h1 {
+            font-size: 2rem;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .hypothesis-box {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        .principle-list {
+            list-style: none;
+            padding: 0;
+        }
+        .principle-item {
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+        .principle-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(10px);
+        }
+        .principle-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .code-block {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="theory-container card-glass">
+        <header class="theory-header">
+            <h1>双核层级理论（DCHT）纲要</h1>
+            <p style="text-align: center; color: var(--text-muted);">——针对 "Ambi现象" 的语言学假说</p>
+        </header>
+
+        <div class="hypothesis-box">
+            <h3>// 理论核心假设</h3>
+            <p>"Ambi现象" 揭示了一种语言的双重驱动机制：语言结构由 <strong>"结构核" (Structural Core)</strong> 和 <strong>"功能核" (Functional Core)</strong> 共同支配，二者通过动态层级投射实现交互。</p>
+        </div>
+
+        <ul class="principle-list">
+            <li class="principle-item">
+                <div class="principle-title">01. 双核驱动原则</div>
+                <p>结构核与功能核独立运作，但共享同一组词汇项。结构核负责句法层级的线性排列，功能核控制语义角色的隐式关联。</p>
+            </li>
+            <li class="principle-item">
+                <div class="principle-title">02. 层级投射原则</div>
+                <p>句法层级由结构核主导，按“标记优先级”排序；语义层级由功能核主导，按“事件紧密度”排序。</p>
+                <div class="code-block">结构核投射：Ambi（施事）-la → huk（动作）-lekot letos（时态） → ulatol（受事）</div>
+            </li>
+            <li class="principle-item">
+                <div class="principle-title">03. 动态接口原则</div>
+                <p>双核通过“语义锚点”（Semantic Anchor）实现交互，通常是动词或核心名词。动词 huk（吃）既是结构核的句法中心，又是功能核的语义锚点。</p>
+            </li>
+            <li class="principle-item">
+                <div class="principle-title">04. 语境适应性原则</div>
+                <p>功能核优先响应语用需求，结构核提供形式约束，二者在语境中动态平衡。若强调工具，datu salokq 可脱离常规语序靠近动词。</p>
+            </li>
+        </ul>
+
+        <div style="margin-top: 3rem;">
+            <h2 class="section-title">// 理论验证与应用</h2>
+            <p>DCHT 解释了作格语言中形式标记与语义功能的分工模式，挑战了传统“中心语参数”理论。在自然语言处理中，需分别建模结构核（句法树）与功能核（语义图），通过动态接口优化输出。</p>
+        </div>
+    </div>
+
+    <script src="../js/layout.js"></script>
+</body>
+</html>
