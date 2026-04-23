@@ -3,116 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合作群事项说明</title>
+    <title>合作群事项说明 - TUCM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        section {
-            background-color: white;
+        .content-wrapper {
+            max-width: 900px;
+            margin: 3rem auto;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            color: #007bff;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        
+        .page-title {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
         }
-        li {
-            margin-bottom: 1.5rem;
+        
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
         }
-        li h3 {
-            color: #28a745;
+        
+        .info-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-section h2 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-section h2::before {
+            content: '//';
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .info-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .signature-block {
+            text-align: right;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .signature-name {
+            color: var(--text-color);
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
-        li p {
-            margin: 0;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background-color: #007bff;
-            color: white;
-            margin-top: 2rem;
-        }
-        .signature {
-            text-align: right;
-            margin-top: 2rem;
-        }
-        .date {
-            color: #6c757d;
+        
+        .signature-date {
+            color: var(--text-muted);
             font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin: 2rem 1rem;
+                padding: 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .info-card {
+                padding: 1.5rem;
+            }
+            
+            .info-section h2 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>合作群事项说明</h1>
-    </header>
-    <main>
-        <section>
-            <h2>1. 什么是合作群？</h2>
-            <p>合作群，即和 Kinkus 的系列语群（TLGK）建立合作的语言相关群聊，包括但不限于人造语、自然语学习交流等。</p>
+    <nav class="nav-tech">
+        <div class="nav-links" style="width: 100%; justify-content: center;">
+            <a href="index.html">← 返回首页</a>
+        </div>
+    </nav>
 
-            <h2>2. 合作群和本群什么关系？</h2>
-            <p>平等关系。互相可以宣群、共享资料、共同创作等等。合作群可以自由决定是否继续合作和建立新合作。每个合作群之间默认为合作群，适用同样的规则。</p>
-
-            <h2>3. 合作群会有什么变化和限制？</h2>
-            <p>合作群在建立合作后仍以该群群主的管理原则为准。本主体会在魔怔人、恶俗小鬼或者其他可能影响群聊正常活动的方面进行信息通知。除合作群主动安排外，本群群主不会在合作群实行管理义务，不会干涉群聊管理事项。</p>
-
-            <h2>4. 成为合作群有什么好处？</h2>
-            <p>享受群文件大量资料的共享等，详见第 2 条。</p>
-
-            <h2>5. 7500 联盟和本主体什么关系？</h2>
-            <p>平等的合作关系。7500 联盟独立进行群聊的合作和建立工作。所有加入 7500 联盟的群同样为本主体合作群，适用本文所有条例。若有直接和本主体合作的群加入 7500 联盟，则记录到 7500 联盟旗下，不再重复登记。</p>
-
-            <h2>6. 本事项说明由 Kinkus 睹清和汝且候负责解释。</h2>
-            <div class="signature">
-                <p>Kinkus 睹清</p>
-                <p class="date">2024 年 7 月 27 日</p>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1 class="page-title">合作群事项说明</h1>
+            <p class="page-subtitle">造语者联盟合作规范与指南</p>
+        </div>
+        
+        <div class="info-card">
+            <div class="info-section">
+                <h2>什么是合作群？</h2>
+                <p>合作群，即和 Kinkus 的系列语群（TLGK）建立合作的语言相关群聊，包括但不限于人造语、自然语学习交流等。</p>
             </div>
-        </section>
-    </main>
-    <style>
-        body::after {
-          content: "版权所有 © 2025 造语者联盟";
-          background-color: #f5f5f5;
-          padding: 10px;
-          text-align: center;
-          font-family: Arial, sans-serif;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-        }
-      </style>
+
+            <div class="info-section">
+                <h2>合作群和本群什么关系？</h2>
+                <p>平等关系。互相可以宣群、共享资料、共同创作等等。合作群可以自由决定是否继续合作和建立新合作。每个合作群之间默认为合作群，适用同样的规则。</p>
+            </div>
+
+            <div class="info-section">
+                <h2>合作群会有什么变化和限制？</h2>
+                <p>合作群在建立合作后仍以该群群主的管理原则为准。本主体会在魔怔人、恶俗小鬼或者其他可能影响群聊正常活动的方面进行信息通知。除合作群主动安排外，本群群主不会在合作群实行管理义务，不会干涉群聊管理事项。</p>
+            </div>
+
+            <div class="info-section">
+                <h2>成为合作群有什么好处？</h2>
+                <p>享受群文件大量资料的共享等，详见第 2 条。</p>
+            </div>
+
+            <div class="info-section">
+                <h2>7500 联盟和本主体什么关系？</h2>
+                <p>平等的合作关系。7500 联盟独立进行群聊的合作和建立工作。所有加入 7500 联盟的群同样为本主体合作群，适用本文所有条例。若有直接和本主体合作的群加入 7500 联盟，则记录到 7500 联盟旗下，不再重复登记。</p>
+            </div>
+
+            <div class="info-section">
+                <h2>解释权说明</h2>
+                <p>本事项说明由 Kinkus 睹清和汝且候负责解释。</p>
+                <div class="signature-block">
+                    <p class="signature-name">Kinkus 睹清</p>
+                    <p class="signature-date">2024 年 7 月 27 日</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 1.5rem; color: var(--text-muted); border-top: var(--glass-border); margin-top: 2rem;">
+        <p>版权所有 © 2025 造语者联盟</p>
+    </footer>
+
+    <script src="js/layout.js"></script>
 </body>
-<a href="index.html">
-    <button>返回首页</button>
 </html>
