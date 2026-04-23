@@ -8,16 +8,36 @@
     <link rel="stylesheet" href="css/components.css">
     <style>
         .search-container {
-            max-width: 600px;
-            margin: 4rem auto;
-            padding: 2rem;
+            max-width: 700px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+        }
+        .search-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .search-title {
+            font-size: 2rem;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .search-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
         .result-card {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid var(--primary-color);
             padding: 1.5rem;
             margin-top: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .result-list {
             margin-top: 1.5rem;
@@ -25,28 +45,63 @@
         .list-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.8rem;
+            padding: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.2s;
+        }
+        .list-item:hover {
+            background: rgba(59, 130, 246, 0.05);
         }
         .cn { color: var(--text-muted); }
-        .conlang { color: var(--accent-color); font-weight: bold; }
+        .conlang { 
+            color: var(--accent-color); 
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
         .loading-spinner {
             border: 3px solid rgba(255,255,255,0.1);
             border-top: 3px solid var(--primary-color);
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             animation: spin 1s linear infinite;
-            margin: 1rem auto;
+            margin: 2rem auto;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .placeholder-text { text-align: center; color: var(--text-muted); margin-top: 2rem; }
-        .no-result { text-align: center; color: #ef4444; margin-top: 2rem; }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+        .placeholder-text { 
+            text-align: center; 
+            color: var(--text-muted); 
+            margin-top: 3rem;
+            font-size: 0.95rem;
+        }
+        .no-result { 
+            text-align: center; 
+            color: #ef4444; 
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .search-container {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+            .search-title {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="search-container card-glass">
-        <h1 style="text-align: center; margin-bottom: 2rem;">查索玛苏语词典</h1>
+        <div class="search-header">
+            <h1 class="search-title">查索玛苏语词典</h1>
+            <p class="search-subtitle">输入中文或查语单词进行检索</p>
+        </div>
         <input type="text" id="inputWord" class="input-neon" placeholder="输入中文或查语单词..." onkeyup="searchWord()">
         <div id="result"></div>
     </div>

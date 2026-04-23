@@ -9,14 +9,20 @@
     <style>
         .zcj-layout {
             display: grid;
-            grid-template-columns: 350px 1fr;
+            grid-template-columns: 380px 1fr;
             gap: 2rem;
             max-width: 1400px;
             margin: 2rem auto;
             padding: 2rem;
-            height: calc(100vh - 100px);
+            min-height: calc(100vh - 150px);
         }
-        @media (max-width: 900px) { .zcj-layout { grid-template-columns: 1fr; height: auto; } }
+        @media (max-width: 900px) { 
+            .zcj-layout { 
+                grid-template-columns: 1fr; 
+                min-height: auto;
+                padding: 1rem;
+            } 
+        }
         
         .config-panel {
             overflow-y: auto;
@@ -28,22 +34,45 @@
         }
         .word-display {
             flex-grow: 1;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             border: 1px solid var(--primary-color);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.5rem;
             font-family: 'Courier New', monospace;
             color: #a5f3fc;
             overflow-y: auto;
             white-space: pre-wrap;
+            box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1);
+            min-height: 400px;
         }
         textarea.input-neon {
-            min-height: 80px;
+            min-height: 100px;
             resize: vertical;
             font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
         }
         .control-group { margin-bottom: 1.5rem; }
-        .control-group label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); }
+        .control-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .counter {
+            margin: 1rem 0;
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -67,7 +96,7 @@
             </div>
 
             <button id="generateBtn" class="btn-tech" style="width: 100%;">启动生成程序</button>
-            <button id="clearBtn" class="btn-tech secondary" style="width: 100%; margin-top: 1rem;">清除缓存</button>
+            <button id="clearBtn" class="btn-tech btn-secondary" style="width: 100%; margin-top: 1rem;">清除缓存</button>
         </div>
 
         <div class="card-glass output-panel">
