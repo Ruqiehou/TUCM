@@ -1,179 +1,104 @@
- 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>语联文集</title>
+    <title>语联文集 - TUCM</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
+        .archive-hero {
+            text-align: center;
+            padding: 3rem 2rem;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+        .archive-title {
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
         }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+        .news-container {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 2rem;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 3rem auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            padding: 2.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        h1 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.2em;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--secondary-color);
-            margin: 1rem auto;
-        }
-
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .nav-card {
-            background: white;
-            border-radius: 8px;
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 1.5rem;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .nav-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .nav-card.a-site {
-            border-top: 4px solid #3498db;
-        }
-
-        .nav-card.b-site {
-            border-top: 4px solid #e74c3c;
-        }
-
-        h2 {
-            color: var(--primary-color);
             margin-bottom: 1rem;
-            font-size: 1.4em;
-        }
-
-        p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid var(--primary-color);
             transition: all 0.3s ease;
         }
-
-        .btn-primary {
-            background: var(--secondary-color);
-            color: white;
+        .news-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(10px);
         }
-
-        .btn-primary:hover {
-            background: #2980b9;
+        .news-content h2 {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
         }
-
-        .btn-secondary {
-            background: var(--accent-color);
-            color: white;
+        .news-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
-
-        .btn-secondary:hover {
-            background: #c0392b;
+        .news-link {
+            color: var(--accent-color);
+            font-weight: bold;
+            white-space: nowrap;
+            margin-left: 1.5rem;
         }
-
-        @media (max-width: 480px) {
-            .container {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
+        @media (max-width: 768px) {
+            .archive-title { font-size: 2.2rem; }
+            .news-item { flex-direction: column; align-items: flex-start; }
+            .news-link { margin-left: 0; margin-top: 1rem; }
         }
     </style>
-<style>
-    body::after {
-      content: "版权所有 © 2026 造语者联盟";
-      background-color: #f5f5f5;
-      padding: 10px;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
-  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>欢迎访问语联文集</h1>
-        
-        <div class="nav-grid">
-         
-            <div class="nav-card a-site">
-                <h2>文一</h2>
-                <p>ambi</p>
-                <a href="page1.html" class="btn btn-primary" target="_blank">访问</a>
-            </div>
-
-            
-            <div class="nav-card b-site">
-                <h2>文二</h2>
-                <p>小说一篇</p>
-                <a href="page2.html" class="btn btn-secondary" target="_blank">访问</a>
-            </div>
-            
-            <div class="nav-card">
-                <h2>文三</h2>
-                <p>论述文</p>
-                <a href="page3.html" class="btn btn-primary" target="_blank">访问</a>
-        </div>
-        <div class="nav-card">
-                <h2>文四</h2>
-                <p>论述文</p>
-                <a href="page4.html" class="btn btn-primary" target="_blank">访问</a>
-        </div>
+    <div class="archive-hero">
+        <h1 class="archive-title">语联文集档案</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">探索造语者联盟的文学创作与理论研究成果。</p>
     </div>
+
+    <div class="news-container card-glass">
+        <a href="page1.html" class="news-item">
+            <div class="news-content">
+                <h2>// Ambi 现象研究</h2>
+                <p>ambi - 深度符号学分析</p>
+            </div>
+            <span class="news-link">阅读全文 ></span>
+        </a>
+
+        <a href="page2.html" class="news-item">
+            <div class="news-content">
+                <h2>// 帝国的诞生：汝且侯</h2>
+                <p>小说一篇 - 文明建设史诗</p>
+            </div>
+            <span class="news-link">阅读全文 ></span>
+        </a>
+        
+        <a href="page3.html" class="news-item">
+            <div class="news-content">
+                <h2>// 论述文三</h2>
+                <p>论述文 - 语言学范式革新</p>
+            </div>
+            <span class="news-link">阅读全文 ></span>
+        </a>
+        
+        <a href="page4.html" class="news-item">
+            <div class="news-content">
+                <h2>// 论述文四</h2>
+                <p>论述文 - 双核层级理论纲要</p>
+            </div>
+            <span class="news-link">阅读全文 ></span>
+        </a>
+    </div>
+
+    <script src="../js/layout.js"></script>
 </body>
 </html>
- 

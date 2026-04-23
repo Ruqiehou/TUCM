@@ -101,3 +101,41 @@
 .nav-links a:hover {
     color: var(--primary-color);
 }
+
+/* 响应式导航栏 */
+@media (max-width: 768px) {
+    .nav-tech {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .nav-logo {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .nav-links a {
+        margin-left: 0;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+    }
+}
