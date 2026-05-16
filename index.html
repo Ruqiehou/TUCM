@@ -1,130 +1,115 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
     <title>造语者联盟官方网站</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        .hero-section {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        
-        /* 优化移动端标题显示 */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        /* 响应式网格布局 */
-        @media (max-width: 992px) {
-            .grid-container {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 1rem;
-            }
-        }
-        
-        .category-card h2 {
-            color: var(--primary-color);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .tech-link {
-            display: block;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border-left: 3px solid var(--primary-color);
-            background: rgba(255,255,255,0.05);
-            transition: all 0.3s;
-        }
-        
-        .tech-link:hover {
-            background: var(--primary-color);
-            color: white;
-            padding-left: 1.5rem;
-        }
-        
-        /* 移动端链接优化 */
-        @media (max-width: 576px) {
-            .tech-link {
-                padding: 0.7rem;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="hero-section">
-        <h1 class="hero-title">TUCM 造语者联盟</h1>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">探索语言的边界，构建想象的维度。成立于2020年，致力于人造语言与世界观设定的前沿研究。</p>
-    </div>
-    
-    <div class="grid-container">
-        <div class="card-glass category-card">
-            <h2>// 核心内容</h2>
-            <a href="ruqiehou.html" class="tech-link">汝且候简介</a>
-            <a href="pages/page0.html" class="tech-link">文集档案</a>
-        </div>
+    <main class="site-main wide">
+        <header class="page-header">
+            <span class="tag">Conlang Community</span>
+            <h1>造语者联盟官方网站</h1>
+            <p class="subtitle">一个面向人造语言爱好者的轻量社区站点，收录联盟介绍、创作文章与实用工具。</p>
+        </header>
 
-        <div class="card-glass category-card">
-            <h2>// 研发工具</h2>
-            <a href="zcj.html" class="tech-link">造词机 [ZCJ]</a>
-            <a href="csmsword.html" class="tech-link">查索玛苏语词典</a>
-            <a href="sjrmdm.html" class="tech-link">随机人名地名生成器</a>
-            <a href="zxcd.html" class="tech-link">用户中心</a>
-        </div>
+        <section class="card mb-4">
+            <div class="prose">
+                <p>造语者联盟成立于 2020 年 5 月 17 日，8 月 8 日造语联盟贴吧成立。20 年下半年，造语者交流群更名造语者联盟，标志着联盟的正式成立。2023 年 10 月 5 日下午 14 时 30 分，建立了造语者联盟 Fandom。2025 年 2 月 21 日 0 时 9 分，自建官网上线。</p>
+            </div>
+        </section>
 
-        <div class="card-glass category-card">
-            <h2>// 外部链接</h2>
-            <a href="https://tucm.fandom.com/zh/wiki/%E9%80%A0%E8%AF%AD%E8%80%85%E8%81%94%E7%9B%9F_Wiki" target="_blank" class="tech-link">造语者联盟 Wiki</a>
-            <a href="http://wiki.tucm.top/" target="_blank" class="tech-link">独立 Wiki 站点</a>
-        </div>
-    </div>
+        <section class="mt-8">
+            <header class="page-header">
+                <h1>内容入口</h1>
+                <p class="subtitle">以文章和资料为核心，像博客一样沉淀社区内容。</p>
+            </header>
+            <div class="card-grid">
+                <article class="card">
+                    <span class="tag">人物</span>
+                    <h2>汝且候简介</h2>
+                    <p>介绍汝且候在平台、创作和人造语言社区中的活动。</p>
+                    <a class="btn btn-outline" href="pages/articles/ruqiehou-profile.html">阅读介绍</a>
+                </article>
+                <article class="card">
+                    <span class="tag">社区</span>
+                    <h2>合作群事项说明</h2>
+                    <p>整理合作群的性质、关系、规则边界和说明事项。</p>
+                    <a class="btn btn-outline" href="pages/articles/cooperation-groups.html">查看说明</a>
+                </article>
+                <article class="card">
+                    <span class="tag">文集</span>
+                    <h2>语联文集</h2>
+                    <p>收录语联相关作品、小说和论述文章。</p>
+                    <a class="btn btn-outline" href="pages/articles/collection.html">进入文集</a>
+                </article>
+            </div>
+        </section>
 
-    <script src="js/layout.js"></script>
+        <section class="mt-8">
+            <header class="page-header">
+                <h1>工具入口</h1>
+                <p class="subtitle">保留原有工具功能，统一为更轻、更清晰的界面。</p>
+            </header>
+            <div class="card-grid">
+                <article class="card">
+                    <span class="tag">Dictionary</span>
+                    <h2>查索玛苏语词典</h2>
+                    <p>输入中文或查语单词，快速查询对应词条。</p>
+                    <a class="btn btn-primary" href="pages/tools/csms-dictionary.html">打开词典</a>
+                </article>
+                <article class="card">
+                    <span class="tag">Generator</span>
+                    <h2>造词机</h2>
+                    <p>基于自定义音节和符号规则批量生成词语。</p>
+                    <a class="btn btn-primary" href="pages/tools/word-generator.html">开始造词</a>
+                </article>
+                <article class="card">
+                    <span class="tag">Random</span>
+                    <h2>随机人名地名</h2>
+                    <p>快速生成中文风格的人名与地名素材。</p>
+                    <a class="btn btn-primary" href="pages/tools/random-name-place-generator.html">随机生成</a>
+                </article>
+                <article class="card">
+                    <span class="tag">User</span>
+                    <h2>用户中心</h2>
+                    <p>管理个人词库与语言创作资料。</p>
+                    <a class="btn btn-primary" href="pages/tools/user-center.html">进入中心</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="mt-8">
+            <header class="page-header">
+                <h1>友情链接</h1>
+                <p class="subtitle">与联盟相关的外部站点和合作资源。</p>
+            </header>
+            <div class="card-grid">
+                <a class="friend-link-card" href="https://gendaris.com" target="_blank" rel="noopener">
+                    <img src="assets/images/gendaris_logo.png" alt="Gendaris">
+                    <div class="fl-info">
+                        <h3>Gendaris</h3>
+                        <p>相关合作站点</p>
+                    </div>
+                </a>
+                <a class="friend-link-card" href="https://tucm.fandom.com/zh/wiki/%E9%80%A0%E8%AF%AD%E8%80%85%E8%81%94%E7%9B%9F_Wiki" target="_blank" rel="noopener">
+                    <img src="assets/images/tucm_logo.jpg" alt="TUCM Wiki">
+                    <div class="fl-info">
+                        <h3>TUCM Wiki</h3>
+                        <p>造语者联盟 Fandom Wiki</p>
+                    </div>
+                </a>
+                <a class="friend-link-card" href="https://wsc.example.com" target="_blank" rel="noopener">
+                    <img src="assets/images/wsc_logo.jpg" alt="WSC">
+                    <div class="fl-info">
+                        <h3>WSC</h3>
+                        <p>相关社区资源</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    <script src="assets/js/layout.js"></script>
 </body>
 </html>

@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户中心 - 造语者联盟</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .auth-section,
+        .dictionary-section {
+            padding: 24px;
+        }
+        .tab-navigation {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .tab-button {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .tab-button:hover,
+        .tab-button.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: var(--accent-light);
+        }
+        .dictionary-form {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .dictionary-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .dictionary-item:last-child {
+            border-bottom: none;
+        }
+        .dictionary-item .info {
+            flex: 1;
+        }
+        .dictionary-item .info strong {
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .dictionary-item .info p {
+            margin: 6px 0;
+            color: var(--text-muted);
+        }
+        .dictionary-item .info small,
+        .dictionary-item .info em {
+            color: var(--text-light);
+            font-size: 0.82rem;
+        }
+        .dictionary-item .actions {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .success-message {
+            color: #198754;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            margin-bottom: 24px;
+            background: #eef8f1;
+            border: 1px solid #cfe8d6;
+            border-radius: var(--radius);
+        }
+        @media (max-width: 640px) {
+            .dictionary-item,
+            .user-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="site-main">
+        <header class="page-header">
+            <span class="tag">User Center</span>
+            <h1>用户中心</h1>
+            <p class="subtitle">管理您的个人词库和语言创作资料。</p>
+        </header>
+
+        <section class="card" style="padding:0;overflow:hidden;">
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="auth" type="button">登录/注册</button>
+                <button class="tab-button" data-tab="dictionary" id="dictTabBtn" type="button">词库管理</button>
+            </div>
+
+            <div class="auth-section" id="authSection">
+                <div id="loginForm">
+                    <h2 class="mb-4">用户登录</h2>
+                    <div class="form-group">
+                        <label for="loginNickname">昵称</label>
+                        <input class="form-control" type="text" id="loginNickname" name="loginNickname" required>
+                        <div class="error-message" id="login-nickname-error">请输入正确的昵称</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <input class="form-control" type="password" id="loginPassword" name="loginPassword" required>
+                        <div class="error-message" id="login-password-error">密码不正确</div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-primary" id="loginBtn">登录</button>
+                        <button type="button" class="btn btn-outline" id="showRegisterBtn">注册新账户</button>
+                    </div>
+                    <div class="success-message" id="login-success">登录成功！</div>
+                </div>
+
+                <div id="registerForm" class="hidden mt-8">
+                    <h2 class="mb-4">用户注册</h2>
+                    <div class="form-group">
+                        <label for="regNickname">昵称</label>
+                        <input class="form-control" type="text" id="regNickname" name="regNickname" required>
+                        <div class="error-message" id="reg-nickname-error">请输入有效的昵称</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">密码</label>
+                        <input class="form-control" type="password" id="regPassword" name="regPassword" required>
+                        <div class="error-message" id="reg-password-error">密码至少需要6个字符</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">确认密码</label>
+                        <input class="form-control" type="password" id="regConfirmPassword" name="regConfirmPassword" required>
+                        <div class="error-message" id="reg-confirm-error">两次输入的密码不一致</div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-primary" id="registerBtn">注册</button>
+                        <button type="button" class="btn btn-outline" id="showLoginBtn">返回登录</button>
+                    </div>
+                    <div class="success-message" id="reg-success">注册成功！</div>
+                </div>
+            </div>
+
+            <div class="dictionary-section" id="dictionarySection">
+                <div class="user-info" id="userInfo">
+                    <div>欢迎，<strong id="displayNickname"></strong>！</div>
+                    <button type="button" class="btn btn-outline" id="logoutBtn">退出登录</button>
+                </div>
+
+                <div class="dictionary-form">
+                    <h2 class="mb-4">添加新词条</h2>
+                    <div class="form-group">
+                        <label for="word">词语</label>
+                        <input class="form-control" type="text" id="word" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="definition">定义</label>
+                        <input class="form-control" type="text" id="definition" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pronunciation">发音</label>
+                        <input class="form-control" type="text" id="pronunciation">
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-primary" id="addWordBtn">添加词条</button>
+                        <button type="button" class="btn btn-outline" id="clearFormBtn">清空</button>
+                    </div>
+                    <div class="success-message" id="add-success">词条添加成功！</div>
+                </div>
+
+                <section class="dictionary-list" id="dictionaryList">
+                    <h2 class="mb-4">我的词条列表</h2>
+                    <div id="wordsContainer"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../assets/js/user-auth.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查索玛苏语词典 - 造语者联盟</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <main class="site-main">
+        <header class="page-header">
+            <span class="tag">Dictionary</span>
+            <h1>查索玛苏语词典</h1>
+            <p class="subtitle">输入中文或查语单词，查询对应词条。</p>
+        </header>
+
+        <section class="card">
+            <div class="form-group">
+                <label for="inputWord">查询词</label>
+                <input class="form-control" type="text" id="inputWord" placeholder="请输入中文或查语单词">
+                <p class="form-hint">支持按原有词典数据进行查询。</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <button class="btn btn-primary" type="button" onclick="searchWord()">查询</button>
+                <a class="btn btn-outline" href="../../index.html">返回首页</a>
+            </div>
+        </section>
+
+        <section class="tool-result mt-4">
+            <h2>查询结果</h2>
+            <div id="result" class="result-box mt-4"></div>
+        </section>
+    </main>
+
+    <script src="../../assets/js/dictionary.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+</body>
+</html>

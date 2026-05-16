@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>造词机 - 造语者联盟</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+        .symbol-item textarea {
+            min-height: 96px;
+            font-family: 'Courier New', monospace;
+        }
+        .word-display {
+            min-height: 300px;
+            max-height: 460px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <main class="site-main wide">
+        <header class="page-header">
+            <span class="tag">Word Generator</span>
+            <h1>造词机</h1>
+            <p class="subtitle">自定义词语音节结构与音位，批量生成属于你自己的语言词汇。</p>
+        </header>
+
+        <div class="tool-layout">
+            <section class="tool-panel">
+                <h2>音节结构配置</h2>
+                <div class="form-group">
+                    <label for="syllablePattern">音节结构模板</label>
+                    <input class="form-control" type="text" id="syllablePattern" value="CV CVC" placeholder="例如：CV CVC">
+                    <p class="form-hint">使用空格分隔，C=辅音，V=元音，T=声调。</p>
+                </div>
+
+                <div class="form-group">
+                    <label>音节数量</label>
+                    <div class="flex flex-wrap gap-2">
+                        <button id="addSyllable" class="btn btn-outline" type="button">添加音节</button>
+                        <button id="removeSyllable" class="btn btn-ghost" type="button">移除音节</button>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    C 表示辅音，V 表示元音，T 表示声调；每个位置可设多个备选，用英文逗号分隔。
+                </div>
+
+                <h2>音位配置</h2>
+                <div class="symbol-grid">
+                    <div class="form-group symbol-item">
+                        <label for="consonants">辅音 C</label>
+                        <textarea class="form-control" id="consonants">p,t,k,b,d,g,m,n,f,s,sh,r,l</textarea>
+                    </div>
+                    <div class="form-group symbol-item">
+                        <label for="vowels">元音 V</label>
+                        <textarea class="form-control" id="vowels">a,e,i,o,u,ai,ei,ao,ou</textarea>
+                    </div>
+                    <div class="form-group symbol-item">
+                        <label for="tones">声调 T</label>
+                        <textarea class="form-control" id="tones">˥,˧˥,˨˩˦,˥˩</textarea>
+                    </div>
+                    <div class="form-group symbol-item">
+                        <label for="custom1">自定义 X</label>
+                        <textarea class="form-control" id="custom1" placeholder="例如：zh,ch,sh"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="maxResults">最大生成数量</label>
+                    <select class="form-control" id="maxResults">
+                        <option value="100">100</option>
+                        <option value="500" selected>500</option>
+                        <option value="1000">1000</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="wordSeparator">词语分隔符</label>
+                    <input class="form-control" type="text" id="wordSeparator" value=" " placeholder="例如：- 或 空格">
+                </div>
+
+                <button id="generateBtn" class="btn btn-primary" type="button">生成词语</button>
+            </section>
+
+            <section class="tool-result">
+                <div class="flex justify-between items-center flex-wrap gap-2 mb-4">
+                    <h2>生成结果</h2>
+                    <span class="tag">已生成 <span id="wordCount">0</span> 个</span>
+                </div>
+                <div class="result-box word-display" id="wordOutput"></div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button id="exportBtn" class="btn btn-outline" type="button">导出 TXT</button>
+                    <button id="clearBtn" class="btn btn-danger" type="button">清除结果</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let generatedWords = [];
+            const syllablePattern = document.getElementById('syllablePattern');
+            const addSyllableBtn = document.getElementById('addSyllable');
+            const removeSyllableBtn = document.getElementById('removeSyllable');
+            const generateBtn = document.getElementById('generateBtn');
+            const exportBtn = document.getElementById('exportBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const wordOutput = document.getElementById('wordOutput');
+            const wordCount = document.getElementById('wordCount');
+
+            addSyllableBtn.addEventListener('click', function() {
+                const current = syllablePattern.value.trim();
+                syllablePattern.value = current === '' ? 'CV' : current + ' CV';
+            });
+
+            removeSyllableBtn.addEventListener('click', function() {
+                const syllables = syllablePattern.value.trim().split(' ');
+                if (syllables.length > 1) {
+                    syllables.pop();
+                    syllablePattern.value = syllables.join(' ');
+                }
+            });
+
+            generateBtn.addEventListener('click', generateWords);
+
+            clearBtn.addEventListener('click', function() {
+                wordOutput.innerHTML = '';
+                wordCount.textContent = '0';
+                generatedWords = [];
+            });
+
+            exportBtn.addEventListener('click', function() {
+                const content = generatedWords.join('\n');
+                if (!content) {
+                    alert('请先生成一些词语！');
+                    return;
+                }
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'generated_words.txt';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(function() {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 0);
+            });
+
+            function generateWords() {
+                const pattern = syllablePattern.value.trim();
+                if (!pattern) {
+                    alert('请输入音节结构');
+                    return;
+                }
+                const consonants = document.getElementById('consonants').value.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+                const vowels = document.getElementById('vowels').value.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+                const tones = document.getElementById('tones').value.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+                const custom1 = document.getElementById('custom1').value.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+                const phonemeMap = { C: consonants, V: vowels, T: tones, X: custom1 };
+                const syllables = pattern.split(' ').map(function(s) { return s.toUpperCase(); });
+
+                for (const syllable of syllables) {
+                    for (const char of syllable) {
+                        if (!phonemeMap[char] || phonemeMap[char].length === 0) {
+                            alert('符号 "' + char + '" 没有配置备选音位');
+                            return;
+                        }
+                    }
+                }
+
+                let words = [''];
+                const maxResults = parseInt(document.getElementById('maxResults').value, 10);
+                const separator = document.getElementById('wordSeparator').value || ' ';
+
+                for (const syllable of syllables) {
+                    const newWords = [];
+                    for (const word of words) {
+                        const syllableCombos = generateSyllable(syllable, phonemeMap);
+                        for (const combo of syllableCombos) {
+                            if (newWords.length >= maxResults) break;
+                            newWords.push(word ? word + separator + combo : combo);
+                        }
+                        if (newWords.length >= maxResults) break;
+                    }
+                    words = newWords;
+                    if (words.length === 0) break;
+                }
+
+                wordOutput.innerHTML = words.join('<br>');
+                wordCount.textContent = words.length;
+                generatedWords = words;
+            }
+
+            function generateSyllable(syllable, phonemeMap) {
+                const positions = syllable.split('');
+                let combos = [''];
+                for (const pos of positions) {
+                    const newCombos = [];
+                    const phonemes = phonemeMap[pos] || [pos];
+                    for (const phoneme of phonemes) {
+                        for (const combo of combos) {
+                            newCombos.push(combo + phoneme);
+                        }
+                    }
+                    combos = newCombos;
+                }
+                return combos;
+            }
+
+            generateWords();
+        });
+    </script>
+    <script src="../../assets/js/layout.js"></script>
+</body>
+</html>

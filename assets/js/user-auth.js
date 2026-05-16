@@ -1,4 +1,4 @@
-// 文件路径: c:\Users\ASUS\OneDrive\Desktop\tucm_web\js\user_auth.js
+﻿// 文件路径: c:\Users\ASUS\OneDrive\Desktop\tucm_web\js\user-auth.js
 
 document.addEventListener('DOMContentLoaded', function() {
     // 页面元素引用
