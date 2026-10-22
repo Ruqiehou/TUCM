@@ -1,4 +1,4 @@
-﻿// 文件路径: c:\Users\ASUS\OneDrive\Desktop\tucm_web\js\user-auth.js
+// 文件路径: c:\Users\ASUS\OneDrive\Desktop\tucm_web\js\user-auth.js
 
 document.addEventListener('DOMContentLoaded', function() {
     // 页面元素引用
@@ -43,6 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 当前登录用户
     let currentUser = null;
+    let editingWordId = null;
+
+    function ucT(key, fallback) {
+        return window.I18n ? I18n.t(key, fallback) : fallback;
+    }
+
+    function refreshAddButton() {
+        if (editingWordId !== null) {
+            addWordBtn.textContent = ucT('uc.updateBtn', '更新词条');
+        } else {
+            addWordBtn.textContent = ucT('uc.addBtn', '添加词条');
+        }
+    }
     
     // 初始化页面
     initApp();
@@ -76,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (tab === 'dictionary' && currentUser) {
                     showDictionarySection();
                 } else if (tab === 'dictionary' && !currentUser) {
-                    alert('请先登录以访问词库管理功能');
+                    alert(ucT('uc.alertLoginRequired', '请先登录以访问词库管理功能'));
                     document.querySelector('[data-tab="auth"]').click();
                 }
             });
@@ -97,7 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // 词库管理事件
-        addWordBtn.addEventListener('click', addWord);
+        addWordBtn.addEventListener('click', function () {
+            if (editingWordId !== null) {
+                updateWord(editingWordId);
+            } else {
+                addWord();
+            }
+        });
         clearFormBtn.addEventListener('click', clearWordForm);
         logoutBtn.addEventListener('click', handleLogout);
         
@@ -139,20 +158,20 @@ document.addEventListener('DOMContentLoaded', function() {
         let isValid = true;
         
         if (!validateNickname(nickname)) {
-            showError(regNickname, regNicknameError, '昵称至少需要2个字符，最多20个字符，且不能包含特殊字符');
+            showError(regNickname, regNicknameError, ucT('uc.errNicknameRule', '昵称至少需要2个字符，最多20个字符，且不能包含特殊字符'));
             isValid = false;
         } else if (isNicknameTaken(nickname)) {
-            showError(regNickname, regNicknameError, '该昵称已被占用，请选择其他昵称');
+            showError(regNickname, regNicknameError, ucT('uc.errNicknameTaken', '该昵称已被占用，请选择其他昵称'));
             isValid = false;
         }
         
         if (!validatePassword(password)) {
-            showError(regPassword, regPasswordError, '密码至少需要6个字符');
+            showError(regPassword, regPasswordError, ucT('uc.errPwdShort', '密码至少需要6个字符'));
             isValid = false;
         }
         
         if (password !== confirmPassword) {
-            showError(regConfirmPassword, regConfirmError, '两次输入的密码不一致');
+            showError(regConfirmPassword, regConfirmError, ucT('uc.errPwdMismatch', '两次输入的密码不一致'));
             isValid = false;
         }
         
@@ -191,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 验证输入
         if (!nickname) {
-            showError(loginNickname, loginNicknameError, '请输入昵称');
+            showError(loginNickname, loginNicknameError, ucT('uc.errNicknameEmpty', '请输入昵称'));
             return;
         }
         
@@ -201,9 +220,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!user) {
             if (!registeredUsers.some(u => u.nickname === nickname)) {
-                showError(loginNickname, loginNicknameError, '用户不存在');
+                showError(loginNickname, loginNicknameError, ucT('uc.errUserNotExist', '用户不存在'));
             } else {
-                showError(loginPassword, loginPasswordError, '密码不正确');
+                showError(loginPassword, loginPasswordError, ucT('uc.errWrongPassword', '密码不正确'));
             }
             return;
         }
@@ -234,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const pronunciation = pronunciationInput.value.trim();
         
         if (!word || !definition) {
-            alert('词语和定义不能为空');
+            alert(ucT('uc.alertWordRequired', '词语和定义不能为空'));
             return;
         }
         
@@ -271,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
         wordsContainer.innerHTML = '';
         
         if (dictionary.length === 0) {
-            wordsContainer.innerHTML = '<p>您的词库是空的。添加一些词条开始吧！</p>';
+            wordsContainer.innerHTML = '<p>' + ucT('uc.emptyDict', '您的词库是空的。添加一些词条开始吧！') + '</p>';
             return;
         }
         
@@ -286,11 +305,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>${escapeHtml(wordObj.word)}</strong>
                     ${wordObj.pronunciation ? `<em>/${wordObj.pronunciation}/</em>` : ''}
                     <p>${escapeHtml(wordObj.definition)}</p>
-                    <small>添加于: ${new Date(wordObj.dateAdded).toLocaleString()}</small>
+                    <small>${ucT('uc.addedAt', '添加于:')} ${new Date(wordObj.dateAdded).toLocaleString()}</small>
                 </div>
                 <div class="actions">
-                    <button class="btn" onclick="editWord('${wordObj.id}')">编辑</button>
-                    <button class="btn btn-danger" onclick="deleteWord('${wordObj.id}')">删除</button>
+                    <button class="btn" onclick="editWord('${wordObj.id}')">${ucT('uc.editBtn', '编辑')}</button>
+                    <button class="btn btn-danger" onclick="deleteWord('${wordObj.id}')">${ucT('uc.deleteBtn', '删除')}</button>
                 </div>
             `;
             wordsContainer.appendChild(wordItem);
@@ -299,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 删除词条
     function deleteWord(wordId) {
-        if (!confirm('确定要删除这个词条吗？')) return;
+        if (!confirm(ucT('uc.confirmDelete', '确定要删除这个词条吗？'))) return;
         
         // 从当前用户词库中移除词条
         currentUser.dictionary = currentUser.dictionary.filter(w => w.id != wordId);
@@ -330,13 +349,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 刷新词库列表
         loadUserDictionary();
         
-        // 更新按钮文本为"更新词条"
-        const addWordBtnText = addWordBtn.innerText;
-        if(addWordBtnText !== '更新词条') {
-            addWordBtn.dataset.originalText = addWordBtnText; // 保存原始文本
-        }
-        addWordBtn.innerText = '更新词条';
-        addWordBtn.onclick = function() { updateWord(wordId); };
+        // 进入编辑模式
+        editingWordId = wordId;
+        refreshAddButton();
     }
     
     // 更新词条（在编辑模式下保存更改）
@@ -369,10 +384,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateUserDictionary(currentUser.nickname, currentUser.dictionary);
         
         // 恢复按钮文本
-        if(addWordBtn.dataset.originalText) {
-            addWordBtn.innerText = addWordBtn.dataset.originalText;
-            addWordBtn.onclick = function() { addWord(); };
-        }
+        editingWordId = null;
+        refreshAddButton();
         
         // 显示成功消息并清空表单
         addSuccess.style.display = 'block';
@@ -414,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const confirmPassword = regConfirmPassword.value;
         
         if (password !== confirmPassword) {
-            showError(regConfirmPassword, regConfirmError, '两次输入的密码不一致');
+            showError(regConfirmPassword, regConfirmError, ucT('uc.errPwdMismatch', '两次输入的密码不一致'));
             return false;
         } else {
             hideError(regConfirmPassword, regConfirmError);
@@ -479,6 +492,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return text.replace(/[&<>"']/g, m => map[m]);
     }
     
+    // 语言切换后刷新动态内容
+    document.addEventListener('i18n:changed', function () {
+        refreshAddButton();
+        if (currentUser) {
+            loadUserDictionary();
+        }
+    });
+
     // 全局函数供HTML调用
     window.deleteWord = deleteWord;
     window.editWord = editWord;
