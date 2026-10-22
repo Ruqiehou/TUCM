@@ -815,6 +815,17 @@ const vocal = {   "神": "alasuka",
     
 };
 
+function tr(key, fallback) {
+    return window.I18n ? I18n.t(key, fallback) : fallback;
+}
+
+document.addEventListener('i18n:changed', function () {
+    var input = document.getElementById('inputWord');
+    if (input && input.value.trim()) {
+        searchWord();
+    }
+});
+
 // 查询功能
 function searchWord() {
     const input = document.getElementById('inputWord').value.trim().toLowerCase();
@@ -822,14 +833,14 @@ function searchWord() {
     resultDiv.innerHTML = ''; // 清空结果
 
     if (!input) {
-        resultDiv.innerHTML = '请输入内容！';
+        resultDiv.innerHTML = tr('dict.enterInput', '请输入内容！');
         return;
     }
 
     // 精确查询
     if (input in vocal) {
         // 中文到查语
-        resultDiv.innerHTML = `查索玛苏语单词：${vocal[input]}`;
+        resultDiv.innerHTML = tr('dict.resultWord', '查索玛苏语单词：') + vocal[input];
         // 查语到中文的模糊查询
         const reverseMatches = [];
         Object.keys(vocal).forEach(key => {
@@ -838,7 +849,7 @@ function searchWord() {
             }
         });
         if (reverseMatches.length > 0) {
-            resultDiv.innerHTML += '<br><br>对应的汉语词：' + reverseMatches.join(', ');
+            resultDiv.innerHTML += '<br><br>' + tr('dict.reverseLabel', '对应的汉语词：') + reverseMatches.join(', ');
         } else {
             // 中文的模糊查询
             const fuzzyMatches = [];
@@ -848,14 +859,14 @@ function searchWord() {
                 }
             });
             if (fuzzyMatches.length > 0) {
-                resultDiv.innerHTML += '<br><br>相关查询结果（模糊匹配）：<br>' + fuzzyMatches.join('<br>');
+                resultDiv.innerHTML += '<br><br>' + tr('dict.fuzzyLabel', '相关查询结果（模糊匹配）：') + '<br>' + fuzzyMatches.join('<br>');
             }
         }
     } else {
         // 查语到中文
         const reverseKeys = Object.keys(vocal).filter(key => vocal[key].toLowerCase() === input.toLowerCase());
         if (reverseKeys.length > 0) {
-            resultDiv.innerHTML += '对应的汉语词：' + reverseKeys.join(', ');
+            resultDiv.innerHTML += tr('dict.reverseLabel', '对应的汉语词：') + reverseKeys.join(', ');
         } else {
             // 查语的模糊查询
             const fuzzyValues = [];
@@ -865,9 +876,9 @@ function searchWord() {
                 }
             });
             if (fuzzyValues.length > 0) {
-                resultDiv.innerHTML += '相关查询结果（模糊匹配）：<br>' + fuzzyValues.join('<br>');
+                resultDiv.innerHTML += tr('dict.fuzzyLabel', '相关查询结果（模糊匹配）：') + '<br>' + fuzzyValues.join('<br>');
             } else {
-                resultDiv.innerHTML = '未找到相关结果！';
+                resultDiv.innerHTML = tr('dict.notFound', '未找到相关结果！');
             }
         }
     }
