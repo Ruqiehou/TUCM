@@ -33,10 +33,10 @@ function injectNavbar() {
                         <a href="${base}pages/tools/user-center.html" data-page="user-center.html" data-i18n="nav.user">用户中心</a>
                     </div>
                     <select id="langSelect" class="lang-select" data-i18n-aria-label="lang.label" aria-label="语言">
-                        <option value="zh">中文</option>
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
+                        <option value="zh" data-i18n="lang.zh">中文</option>
+                        <option value="en" data-i18n="lang.en">English</option>
+                        <option value="fr" data-i18n="lang.fr">Français</option>
+                        <option value="de" data-i18n="lang.de">Deutsch</option>
                     </select>
                     <button class="nav-menu-btn" type="button" data-i18n-aria-label="nav.menuAria" aria-label="打开菜单">☰</button>
                 </div>
