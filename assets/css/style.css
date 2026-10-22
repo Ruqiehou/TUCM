@@ -87,10 +87,38 @@ img {
     color: var(--accent);
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+.lang-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    padding: 5px 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.lang-select:hover,
+.lang-select:focus {
+    border-color: var(--accent);
+    color: var(--accent);
+    outline: none;
 }
 
 .nav-links a {
@@ -730,6 +758,15 @@ textarea.form-control {
 
     .nav-menu-btn {
         display: block;
+    }
+
+    .nav-right {
+        gap: 6px;
+    }
+
+    .lang-select {
+        font-size: 0.8rem;
+        padding: 4px 6px;
     }
 
     .site-main {
