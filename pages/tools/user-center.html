@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="uc.title">用户中心 - 造语者联盟</title>
+    <title>用户中心 - 造语者联盟</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         .auth-section,
@@ -106,90 +106,90 @@
     <main class="site-main">
         <header class="page-header">
             <span class="tag">User Center</span>
-            <h1 data-i18n="uc.h1">用户中心</h1>
-            <p class="subtitle" data-i18n="uc.subtitle">管理您的个人词库和语言创作资料。</p>
+            <h1>用户中心</h1>
+            <p class="subtitle">管理您的个人词库和语言创作资料。</p>
         </header>
 
         <section class="card" style="padding:0;overflow:hidden;">
             <div class="tab-navigation">
-                <button class="tab-button active" data-tab="auth" type="button" data-i18n="uc.tabAuth">登录/注册</button>
-                <button class="tab-button" data-tab="dictionary" id="dictTabBtn" type="button" data-i18n="uc.tabDict">词库管理</button>
+                <button class="tab-button active" data-tab="auth" type="button">登录/注册</button>
+                <button class="tab-button" data-tab="dictionary" id="dictTabBtn" type="button">词库管理</button>
             </div>
 
             <div class="auth-section" id="authSection">
                 <div id="loginForm">
-                    <h2 class="mb-4" data-i18n="uc.loginTitle">用户登录</h2>
+                    <h2 class="mb-4">用户登录</h2>
                     <div class="form-group">
-                        <label for="loginNickname" data-i18n="uc.nickname">昵称</label>
+                        <label for="loginNickname">昵称</label>
                         <input class="form-control" type="text" id="loginNickname" name="loginNickname" required>
-                        <div class="error-message" id="login-nickname-error" data-i18n="uc.errNickname">请输入正确的昵称</div>
+                        <div class="error-message" id="login-nickname-error">请输入正确的昵称</div>
                     </div>
                     <div class="form-group">
-                        <label for="loginPassword" data-i18n="uc.password">密码</label>
+                        <label for="loginPassword">密码</label>
                         <input class="form-control" type="password" id="loginPassword" name="loginPassword" required>
-                        <div class="error-message" id="login-password-error" data-i18n="uc.errPassword">密码不正确</div>
+                        <div class="error-message" id="login-password-error">密码不正确</div>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-primary" id="loginBtn" data-i18n="uc.loginBtn">登录</button>
-                        <button type="button" class="btn btn-outline" id="showRegisterBtn" data-i18n="uc.showRegister">注册新账户</button>
+                        <button type="button" class="btn btn-primary" id="loginBtn">登录</button>
+                        <button type="button" class="btn btn-outline" id="showRegisterBtn">注册新账户</button>
                     </div>
-                    <div class="success-message" id="login-success" data-i18n="uc.loginSuccess">登录成功！</div>
+                    <div class="success-message" id="login-success">登录成功！</div>
                 </div>
 
                 <div id="registerForm" class="hidden mt-8">
-                    <h2 class="mb-4" data-i18n="uc.registerTitle">用户注册</h2>
+                    <h2 class="mb-4">用户注册</h2>
                     <div class="form-group">
-                        <label for="regNickname" data-i18n="uc.nickname">昵称</label>
+                        <label for="regNickname">昵称</label>
                         <input class="form-control" type="text" id="regNickname" name="regNickname" required>
-                        <div class="error-message" id="reg-nickname-error" data-i18n="uc.errRegNickname">请输入有效的昵称</div>
+                        <div class="error-message" id="reg-nickname-error">请输入有效的昵称</div>
                     </div>
                     <div class="form-group">
-                        <label for="regPassword" data-i18n="uc.password">密码</label>
+                        <label for="regPassword">密码</label>
                         <input class="form-control" type="password" id="regPassword" name="regPassword" required>
-                        <div class="error-message" id="reg-password-error" data-i18n="uc.errPwdShort">密码至少需要6个字符</div>
+                        <div class="error-message" id="reg-password-error">密码至少需要6个字符</div>
                     </div>
                     <div class="form-group">
-                        <label for="regConfirmPassword" data-i18n="uc.confirmPassword">确认密码</label>
+                        <label for="regConfirmPassword">确认密码</label>
                         <input class="form-control" type="password" id="regConfirmPassword" name="regConfirmPassword" required>
-                        <div class="error-message" id="reg-confirm-error" data-i18n="uc.errPwdMismatch">两次输入的密码不一致</div>
+                        <div class="error-message" id="reg-confirm-error">两次输入的密码不一致</div>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-primary" id="registerBtn" data-i18n="uc.registerBtn">注册</button>
-                        <button type="button" class="btn btn-outline" id="showLoginBtn" data-i18n="uc.backToLogin">返回登录</button>
+                        <button type="button" class="btn btn-primary" id="registerBtn">注册</button>
+                        <button type="button" class="btn btn-outline" id="showLoginBtn">返回登录</button>
                     </div>
-                    <div class="success-message" id="reg-success" data-i18n="uc.registerSuccess">注册成功！</div>
+                    <div class="success-message" id="reg-success">注册成功！</div>
                 </div>
             </div>
 
             <div class="dictionary-section" id="dictionarySection">
                 <div class="user-info" id="userInfo">
-                    <div><span data-i18n="uc.welcome">欢迎，</span><strong id="displayNickname"></strong><span data-i18n="uc.welcomeEnd">！</span></div>
-                    <button type="button" class="btn btn-outline" id="logoutBtn" data-i18n="uc.logout">退出登录</button>
+                    <div><span>欢迎，</span><strong id="displayNickname"></strong><span>！</span></div>
+                    <button type="button" class="btn btn-outline" id="logoutBtn">退出登录</button>
                 </div>
 
                 <div class="dictionary-form">
-                    <h2 class="mb-4" data-i18n="uc.addTitle">添加新词条</h2>
+                    <h2 class="mb-4">添加新词条</h2>
                     <div class="form-group">
-                        <label for="word" data-i18n="uc.word">词语</label>
+                        <label for="word">词语</label>
                         <input class="form-control" type="text" id="word" required>
                     </div>
                     <div class="form-group">
-                        <label for="definition" data-i18n="uc.definition">定义</label>
+                        <label for="definition">定义</label>
                         <input class="form-control" type="text" id="definition" required>
                     </div>
                     <div class="form-group">
-                        <label for="pronunciation" data-i18n="uc.pronunciation">发音</label>
+                        <label for="pronunciation">发音</label>
                         <input class="form-control" type="text" id="pronunciation">
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-primary" id="addWordBtn" data-i18n="uc.addBtn">添加词条</button>
-                        <button type="button" class="btn btn-outline" id="clearFormBtn" data-i18n="uc.clearBtn">清空</button>
+                        <button type="button" class="btn btn-primary" id="addWordBtn">添加词条</button>
+                        <button type="button" class="btn btn-outline" id="clearFormBtn">清空</button>
                     </div>
-                    <div class="success-message" id="add-success" data-i18n="uc.addSuccess">词条添加成功！</div>
+                    <div class="success-message" id="add-success">词条添加成功！</div>
                 </div>
 
                 <section class="dictionary-list" id="dictionaryList">
-                    <h2 class="mb-4" data-i18n="uc.listTitle">我的词条列表</h2>
+                    <h2 class="mb-4">我的词条列表</h2>
                     <div id="wordsContainer"></div>
                 </section>
             </div>
@@ -197,10 +197,6 @@
     </main>
 
     <script src="../../assets/js/user-auth.js"></script>
-    <script src="../../assets/i18n/en.js"></script>
-    <script src="../../assets/i18n/fr.js"></script>
-    <script src="../../assets/i18n/de.js"></script>
-    <script src="../../assets/js/i18n.js"></script>
     <script src="../../assets/js/layout.js"></script>
 </body>
 </html>

@@ -816,15 +816,8 @@ const vocal = {   "神": "alasuka",
 };
 
 function tr(key, fallback) {
-    return window.I18n ? I18n.t(key, fallback) : fallback;
+    return fallback;
 }
-
-document.addEventListener('i18n:changed', function () {
-    var input = document.getElementById('inputWord');
-    if (input && input.value.trim()) {
-        searchWord();
-    }
-});
 
 // 查询功能
 function searchWord() {

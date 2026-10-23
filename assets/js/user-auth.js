@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let editingWordId = null;
 
     function ucT(key, fallback) {
-        return window.I18n ? I18n.t(key, fallback) : fallback;
+        return fallback;
     }
 
     function refreshAddButton() {
